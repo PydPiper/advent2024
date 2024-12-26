@@ -13,6 +13,13 @@ def readData(filename:str) -> Tuple[np.ndarray]:
     return (np.array(col1, dtype=np.int32), np.array(col2, dtype=np.int32))
 
 def part1(col1:np.ndarray, col2:np.ndarray) -> None:
+    """given 2 list of numbers compute the delta sum of the 2 increasingly sorted lists
+
+    :param col1: unsorted data col1
+    :type col1: np.ndarray
+    :param col2: unsorted data col2
+    :type col2: np.ndarray
+    """
     col1 = np.sort(col1)
     col2 = np.sort(col2)
     diff = np.abs(col1 - col2)
@@ -20,6 +27,14 @@ def part1(col1:np.ndarray, col2:np.ndarray) -> None:
     print(f'Part 1: {diffSum}') 
 
 def part2(col1:np.ndarray, col2:np.ndarray) -> None:
+    """given 2 list of numbers, compute the similarity score which is
+    col1 numbers * # times it appears in col2 then add all of these up
+
+    :param col1: unsorted data col1
+    :type col1: np.ndarray
+    :param col2: unsorted data col2
+    :type col2: np.ndarray
+    """
     col1Unique, col1UniqueCount = np.unique(col1, return_counts=True)
     col2Unique, col2UniqueCount = np.unique(col2, return_counts=True)
     lookup_col2Count = dict(zip(col2Unique,col2UniqueCount))
